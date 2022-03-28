@@ -25,7 +25,7 @@ public class Periodical extends LibraryMedia {
     public Periodical(String title, String publisher, int year, String callNumber, int copies, int month,
             int issueNumber) {
         super(title, publisher, year, callNumber, copies);
-        this.month = month;
+        this.month = month;     
         this.issueNumber = issueNumber;
     }
 

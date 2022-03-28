@@ -145,9 +145,3 @@ Pearson
 8
 Hanly and Koffman
 0134014898
-P-111-222-333
-ACM Transactions on Algorithms
-ACM
-2005
-2
-10

@@ -35,7 +35,7 @@ public class Test {
                         media = fileReader.nextLine();
                         tempMedia[i] = media;
                     }
-
+                    
                     String callNumber = media1;
                     String title = tempMedia[0];
                     String publisher = tempMedia[1];
@@ -129,6 +129,7 @@ public class Test {
                             for (int i = 0; i < numOfLibraryMedia; i++) {
                                 list[i] = tempList[i];
                             }
+                            usrInput.close();
                             break;
                         }
                         case 7: {
@@ -153,7 +154,7 @@ public class Test {
                 scnr.nextLine();
             }
         }
-        
+        scnr.close();
         try (FileWriter writer = new FileWriter("titles.txt")) {
             for (int i = 0; i < list.length; i++) {
                 if (list[i].getCallNumber().matches("P-[0-9]{3}-[0-9]{3}-[0-9]{3}")) {
@@ -161,17 +162,19 @@ public class Test {
                     writer.write(list[i].getTitle() + "\n");
                     writer.write(list[i].getPublisher() + "\n");
                     writer.write(list[i].getYear() + "\n");
-                    writer.write(((Periodical) list[i]).getIssueNumber() + "\n");
+                    writer.write(list[i].getCopies() + "\n");
                     writer.write(((Periodical) list[i]).getMonth() + "\n");
-                    writer.write(list[i].getCopies());
+                    writer.write(((Periodical) list[i]).getIssueNumber()+ "\n");
+                    writer.flush();
                 } else if (list[i].getCallNumber().matches("B-[0-9]{3}-[0-9]{3}-[0-9]{3}")) {
                     writer.write(list[i].getCallNumber() + "\n");
                     writer.write(list[i].getTitle() + "\n");
                     writer.write(list[i].getPublisher() + "\n");
                     writer.write(list[i].getYear() + "\n");
+                    writer.write(list[i].getCopies() + "\n");
                     writer.write(((Book) list[i]).getAuthor() + "\n");
                     writer.write(((Book) list[i]).getISBN() + "\n");
-                    writer.write(list[i].getCopies() + "\n");
+                    writer.flush();
                 }
             }
         } catch (Exception e) {
